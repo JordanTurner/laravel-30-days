@@ -4,12 +4,15 @@ use App\Http\Controllers\JobController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Jobs\TranslateJob;
 
 Route::get('test', function () {
     
-    \Illuminate\Support\Facades\Mail::to('jturner@videotile.co.uk')->send(new App\Mail\JobPosted());
+    $job = \App\Models\Job::first();
 
-    return 'Mail sent';
+    TranslateJob::dispatch($job);
+
+    return 'Done';
 
 });
 

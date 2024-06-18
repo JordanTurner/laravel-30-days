@@ -5,6 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 
+Route::get('test', function () {
+    
+    \Illuminate\Support\Facades\Mail::to('jturner@videotile.co.uk')->send(new App\Mail\JobPosted());
+
+    return 'Mail sent';
+
+});
+
 
 Route::view('/', 'home');
 Route::view('/contact', 'contact');

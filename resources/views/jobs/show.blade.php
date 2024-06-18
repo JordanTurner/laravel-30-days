@@ -14,7 +14,7 @@
     <p>This job pays {{ $job->salary }} per year.</p>
 
     <!-- if the user can edit the job, show the edit button -->
-    @can('edit-job', $job)
+    @can('edit_policy', $job)
         <p class="mt-6">
             <x-button href="/jobs/{{ $job->id}}/edit">Edit Job</x-button>
         </p>

@@ -27,9 +27,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Model::preventLazyLoading();
 
-        Gate::define('edit-job', function (User $user, Job $job)
-        {
-            return $job->employer->user->is(Auth::user());
+        // Define the edit-job gate. This gate will check if the authenticated user is the owner of the job.
+        // the $user passed to the gate here is always the signed in user (Auth::user()). This means we do not need to check for Auth::user() in the route, or anywhere else
+        // that will use this gate
+        // Gate::define('edit-job', function (User $user, Job $job) {
+        //     return $job->employer->user->is($user);
+        // });
+
+        // hardcoding the email address for the employer here just to have a different condition for for the delete-job gate
+        Gate::define('delete-job', function (User $user, Job $job) {
+            return $job->employer->user->is($user) && $job->employer->user->email === 'armstrong.kimberly@example.org';
         });
 
         //Paginator::useBootstrapFive();

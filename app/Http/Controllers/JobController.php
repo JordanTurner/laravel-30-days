@@ -14,7 +14,7 @@ class JobController extends Controller
 
     public function index()
     {
-        $jobs = Job::with('employer')->latest()->simplePaginate(3);
+        $jobs = Job::with('employer')->latest()->paginate(3);
 
         return view('jobs.index', ['jobs' => $jobs]);
     }
@@ -49,13 +49,13 @@ class JobController extends Controller
 
     public function edit(Job $job)
     {
-        Gate::authorize('edit-job', $job);
-
         return view('jobs.edit', ['job' => $job]);
     }
 
     public function update(Job $job)
     {
+        //Gate::authorize('edit-job', $job);
+
         // validation...
 
         request()->validate([
@@ -73,7 +73,7 @@ class JobController extends Controller
 
     public function destroy(Job $job)
     {
-        // authorize (on hold...)
+        Gate::authorize('delete-job', $job);
 
         // delete the job
         $job->delete();

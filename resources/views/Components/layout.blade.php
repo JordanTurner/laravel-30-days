@@ -6,6 +6,8 @@
 
         <title>{{ $title }}</title>
 
+        @vite(['resources/js/app.js', 'resources/css/app.css'])
+
         <link rel="icon" type="image/png" sizes="32x32" href="https://laracasts.com/favicons/favicon-32x32.png">
 
         <!-- Fonts -->

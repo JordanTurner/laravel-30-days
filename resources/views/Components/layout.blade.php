@@ -6,15 +6,14 @@
 
         <title>{{ $title }}</title>
 
-        @vite(['resources/js/app.js', 'resources/css/app.css'])
+        <!-- tailwind is available via app.css -->
+        @vite(['resources/js/app.js'])
 
         <link rel="icon" type="image/png" sizes="32x32" href="https://laracasts.com/favicons/favicon-32x32.png">
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
-
-        <script src="https://cdn.tailwindcss.com"></script>
 
     </head>
 

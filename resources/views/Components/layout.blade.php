@@ -9,6 +9,9 @@
         <!-- tailwind is available via app.css -->
         @vite(['resources/js/app.js'])
 
+        <!-- load app.css from resources folder -->
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
         <link rel="icon" type="image/png" sizes="32x32" href="https://laracasts.com/favicons/favicon-32x32.png">
 
         <!-- Fonts -->
@@ -30,10 +33,11 @@
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
 
-              <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-              <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
-              <x-nav-link href="/jobs" :active="request()->is('jobs')">Jobs</x-nav-link>
-              <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
+              <!-- add a colon(:) before a property to make the value an expression (boolean is this case) instead of a string -->
+              <!-- the request method will return false if the expression does not match the pattern -->
+              <x-nav-link href="/" :active="request()->is('/')" type="a">Home</x-nav-link> 
+              <x-nav-link href="/jobs" :active="request()->is('jobs')" type="a">Jobs</x-nav-link>
+              <x-nav-link href="/contact" :active="request()->is('contact')" type="a">Contact</x-nav-link>
 
             </div>
           </div>

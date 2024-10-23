@@ -18,6 +18,7 @@ Route::get('test', function () {
 
 
 Route::view('/', 'home');
+
 Route::view('/contact', 'contact');
 
 // Job routes

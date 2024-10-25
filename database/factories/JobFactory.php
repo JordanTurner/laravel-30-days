@@ -21,7 +21,7 @@ class JobFactory extends Factory
             
             'title' => fake()->jobTitle(),
             'employer_id' => Employer::factory(),
-            'salary' => fake()->numberBetween(15000, 1000000),
+            'salary' => '£' . fake()->numberBetween(25000, 150000) . ' per year',
         ];
     }
 }

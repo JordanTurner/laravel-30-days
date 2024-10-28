@@ -13,6 +13,7 @@
   <!-- the csrf directive will generate a token to prevent cross-site request forgery attacks and put it in a hidden input field. When the form is posted, the token is compared to the one in your session for validation -->
   
     @csrf 
+    <!-- the browser will not recognize the PATCH method, so we need to add a hidden input field with the name _method and the value PATCH. This will tell Laravel to treat the request as a PATCH request. -->
     @method('PATCH')
 
   <div class="space-y-12">

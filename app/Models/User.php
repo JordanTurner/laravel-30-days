@@ -40,7 +40,10 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
-    protected function casts(): array
+
+     // think of this as a way to manipulate the data when you fetch it or set it. For example, if you want to hash the password when you save it to the database, you can use the hashed cast
+
+     protected function casts(): array
     {
         return [
             'email_verified_at' => 'datetime',

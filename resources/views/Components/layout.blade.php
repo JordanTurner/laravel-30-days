@@ -57,8 +57,11 @@
 
             @auth
 
-              <form method="POST" action="/logout">
+            <!-- a post request is made to the /logout route when the form is submitted. Post method is generally recommended over a get request so that users cannot be sent to a get logout request from a third party
+                e.g. in a malicous email link -->
 
+              <form method="POST" action="/logout">
+  
                 @csrf
 
                 <x-form-button>Log Out</x-form-button>

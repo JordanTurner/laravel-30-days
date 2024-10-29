@@ -24,7 +24,7 @@
             <x-form-label for="email">Email</x-form-label>
 
             <div class="mt-2">
-
+                <!-- in the value, using the old() method to repopulate the field with the value that was submitted in the previous request. This is useful when the form submission fails and the user is redirected back to the form with the old input values. Rememeber: when we don't want to pass a string to the attribute, we must prefix the attribute name with a colon. -->
                 <x-form-input name="email" id="email" type="email" :value="old('email')" required></x-form-input>
                 
                 <x-form-error name="email" />         

@@ -30,10 +30,14 @@ class RegisteredUserController extends Controller
             'password' => ['required', Password::min(6), 'confirmed'], // password_confirmation - the confirmed rule looks for a field with the same name as the field being validated, but with _confirmation appended to it
         ]);
 
+        // dd($validatedAttributes);
+
 
         // create the user
         // the create method will return the user instance that was created and saved to the database. We can save this to a variable and use it to log in the user
         $user = User::create($validatedAttributes);
+
+        //dd($user);
 
         //  log in
         Auth::login($user);

@@ -7,19 +7,29 @@ use App\Http\Controllers\SessionController;
 use App\Jobs\TranslateJob;
 use App\Models\Job;
 
-// Route::get('test', function () {
+Route::get('test', function () {
     
-//     $jobs = Job::all();
+    // dispatching a job to the queue (queued closure)
+    // this will queue the job (jobs table in database). To run the job, run the queue worker: php artisan queue:work
+    // dispatch(function(){
+    //     logger('Hello from the queue');
+    // });
 
-//     dd($jobs[0]);
+    // you can also delay the job using the delay() method
 
-//     // $job = \App\Models\Job::first();
+    // dispatch(function(){
+    //     logger('Hello from the queue');
+    // })->delay(now()->addMinutes(10));
 
-//     // TranslateJob::dispatch($job);
 
-//     // return 'Done';
+    // dispatching a job to the queue (queued class)
 
-// });
+    $job = Job::find(1);
+    TranslateJob::dispatch($job);
+
+    return 'Done';
+
+});
 
 
 /*
@@ -64,8 +74,6 @@ Route::view('/contact', 'contact');
     Route::resource('jobs', JobController::class)->except(['create', 'store', 'edit', 'update', 'destroy']);
 */
 
-
-
 Route::get('/jobs', [JobController::class, 'index']);
 
 Route::get('/jobs/create', [JobController::class, 'create'])->middleware('auth');
@@ -92,7 +100,9 @@ Route::get('/register', [RegisteredUserController::class, 'create']);
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
 
-Route::get('/login', [SessionController::class, 'create'])->name('login');
+// if we used a Route::resource() for the jobs controller with auth middleware, we need to define a name for the login route, otherwise the login form will not work. Laravel is looking for a route named 'login'.
+Route::get('/login', [SessionController::class, 'create'])->name('login'); // named route - used in the login form
+//Route::get('/login', [SessionController::class, 'create']);
 Route::post('/login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destory']);
 

@@ -27,5 +27,12 @@ class TranslateJob implements ShouldQueue
     public function handle(): void
     {
         logger('Translating job listing: ' . $this->jobListing->title . ' to Spanish.');
+
+        // maybe you want to use a translation service here with an AI class e.g.
+        // AI::translate($this->jobListing->description, 'es');
+
+        // the point is, this is potentially a long running task that should be queued and not make the user wait for it to finish
+
+        // note: always restart your worker if a change is made to the job class
     }
 }

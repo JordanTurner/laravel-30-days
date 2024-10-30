@@ -7,5 +7,6 @@
 </p>
 
 <p>
+    <!-- the url method generates an absolute URL for your app -->
     <a href="{{ url('/jobs/' . $job->id) }}">View Your Job Listing</a>
 </p>

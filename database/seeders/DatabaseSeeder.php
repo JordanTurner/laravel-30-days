@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
 
         // database seeders don't have to use factories, they can also use raw SQL queries or Eluquent models to seed the database
 
-        User::factory()->create([
-            'first_name' => 'John',
-            'last_name' => 'Doe',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'first_name' => 'John',
+        //     'last_name' => 'Doe',
+        //     'email' => 'test@example.com',
+        // ]);
         
         $this->call(JobSeeder::class);
     }

@@ -6,11 +6,11 @@
 
         <title>{{ $title }}</title>
 
-        <!-- tailwind is available via app.css -->
-        @vite(['resources/js/app.js'])
+        <!-- vite directive to include our front end files -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         <!-- load app.css from resources folder -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <!-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> -->
 
         <link rel="icon" type="image/png" sizes="32x32" href="https://laracasts.com/favicons/favicon-32x32.png">
 

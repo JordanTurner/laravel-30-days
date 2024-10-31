@@ -7,6 +7,42 @@ use App\Http\Controllers\SessionController;
 use App\Jobs\TranslateJob;
 use App\Models\Job;
 
+
+// Asset Bundling - combining multiple CSS and JS files into a single file to reduce the number of requests made to the server
+
+// there is a package.json file in the root that contains the front end dependencies. To install the dependencies, run npm install. This will create a node_modules directory in the root of the project. To compile the assets, run npm run dev. This will compile the assets and place them in the public directory. To watch for changes and automatically compile the assets, run npm run watch.
+
+// node.js and npm are required to run the above commands. If you don't have them installed, you can download them from the node.js website.
+
+// npm install will install the dependencies listed in the package.json file. The dependencies are installed in the node_modules directory. The node_modules directory is not committed to the repository because it can be quite large. Instead, the package.json file is committed to the repository. When you clone the repository, you can run npm install to install the dependencies.
+
+// when we run npm run dev, Laravel Mix will compile the assets and place them in the public directory. The compiled assets are versioned, which means that the file names are suffixed with a hash of the file contents. This is done to ensure that the browser always fetches the latest version of the assets. The versioned assets are stored. NPM will use the APP_URL from the env file, so we need to set that to the correct URL. By default it is http://localhost. For this project I have changed it to http://127.0.0.1:8000.
+
+// We have also installed Tailwind, rather than inculding it from the CDN. This is because we can use the Tailwind CLI to purge unused CSS classes. This will reduce the size of the CSS file. To install Tailwind for Laravel, we can follow this command: https://tailwindcss.com/docs/guides/laravel, which will give us a tailwind.config.js file. We need to populate the contents array to tell tailwind where to find any utility classes. The above link has some recommended settings. We will then add the tailwind directive to our css file. e.g. 
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+
+// start the build process with npm run dev
+
+
+// we can also configure tailwind to e.g. create a custom color
+
+//   theme: {
+//     extend: {
+//         colors: {
+//           "laracasts": "rgb(50, 138, 241)"
+//         }
+//       },
+//     },
+
+
+//  we created a custom colour called laracase. We can now use this in our css file like so: text-laracasts-500. We've done this on the jobs page for the job title.
+
+
+// vite run build will build the assets for production. This will minify the assets and remove any unused CSS classes. This will create a dist directory in the root of the project. The dist directory contains the compiled assets. The dist directory is not committed to the repository because it can be quite large. Instead, the dist directory is added to the .gitignore file. When you deploy the application, you can run npm run build to build the assets for production.
+
+
 Route::get('test', function () {
     
     // dispatching a job to the queue (queued closure)
